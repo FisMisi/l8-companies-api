@@ -42,7 +42,7 @@ return [
         |
         */
         'csv' => [
-            'delimiter' => ',',
+            'delimiter' => ';',
             'enclosure' => '"',
             'line_ending' => PHP_EOL,
             'use_bom' => false,
@@ -110,7 +110,7 @@ return [
         |
         */
         'heading_row' => [
-            'formatter' => 'slug',
+            'formatter' => 'none',
         ],
 
         /*
