@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Imports\CompaniesImport;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
 
 class ImportCompanies extends Command
 {
