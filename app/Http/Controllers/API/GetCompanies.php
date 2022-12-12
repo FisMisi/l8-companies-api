@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\API\GetCompaniesRequest;
 use App\Http\Resources\API\CompanyResource;
 use App\Services\CompanyService;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class GetCompanies extends Controller
@@ -18,13 +18,11 @@ class GetCompanies extends Controller
     }
 
     /**
-     * Handle the incoming request.
-     *
-     * @param Request $request
+     * @param GetCompaniesRequest $request
      * @return AnonymousResourceCollection
      */
-    public function __invoke(Request $request): AnonymousResourceCollection
+    public function __invoke(GetCompaniesRequest $request): AnonymousResourceCollection
     {
-        return CompanyResource::collection($this->service->getCompanies());
+        return CompanyResource::collection($this->service->getCompaniesByIds($request->input('companyId', [])));
     }
 }
