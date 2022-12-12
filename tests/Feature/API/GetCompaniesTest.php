@@ -30,8 +30,7 @@ it('returns 422 with company id validation error', function ($ids) {
 })->with([
     faker()->word(),
     faker()->randomFloat(3),
-])
-;
+]);
 
 it('returns empty data when the company is does not exist with given id', function () {
     Company::factory()->create(['id' => 11]);
@@ -49,8 +48,7 @@ it('returns companies by given ids', function () {
     $response->assertOk();
 
     expect($response->json('data'))
-        ->not->toBeEmpty()
-    ;
+        ->not->toBeEmpty();
     expect($response->json('data'))
         ->each
         ->toHaveKeys([
@@ -68,6 +66,5 @@ it('returns companies by given ids', function () {
             'activity',
             'active',
             'email',
-        ])
-    ;
+        ]);
 });

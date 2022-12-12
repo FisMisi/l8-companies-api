@@ -31,7 +31,7 @@ class CompanyService
             'email',
         ];
 
-        if(empty($ids)){
+        if (empty($ids)) {
             return Company::query()
                 ->select($cols)
                 ->get();
