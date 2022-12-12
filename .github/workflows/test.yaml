@@ -17,7 +17,7 @@ jobs:
         env:
           MYSQL_DATABASE: testing
           MYSQL_PASSWORD: secret
-          MYSQL_ROOT_PASSWORD: secret
+          MYSQL_ROOT_PASSWORD: password
         ports:
         - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -34,7 +34,7 @@ jobs:
           ENV_APP_DEBUG: true
           ENV_DB_DATABASE: testing
           ENV_DB_USERNAME: root
-          ENV_DB_PASSWORD: secret
+          ENV_DB_PASSWORD: password
           ENV_CACHE_DRIVER: array
           ENV_MAIL_MAILER: array
           ENV_SESSION_DRIVER: array
