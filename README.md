@@ -13,3 +13,13 @@ php artisan migrate
 ```php
 php artisan import:companies
 ```
+
+## REST API
+
+### Get companies
+
+---
+
+Retrieve companies.
+
+`GET /api/companies`
