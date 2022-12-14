@@ -52,7 +52,7 @@ class Company extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    public bool $timestamps = false;
 
     protected $fillable = [
         'name',

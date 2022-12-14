@@ -20,6 +20,17 @@ php artisan import:companies
 
 ---
 
-Retrieve companies.
+Retrieve all companies.
 
 `GET /api/companies`
+
+You can pass company id one or more with query string. 
+E.g.:
+
+`GET /api/companies?companyId[]=1&companyId[]=3`
+
+### Create company
+
+---
+
+`POST /api/companies`

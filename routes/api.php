@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\CreateCompany;
 use App\Http\Controllers\API\GetCompanies;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/companies', GetCompanies::class)->name('api.companies');
+Route::post('/companies', CreateCompany::class)->name('api.companies.store');

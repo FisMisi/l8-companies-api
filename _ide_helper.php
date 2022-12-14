@@ -16712,6 +16712,29 @@
      
 }
 
+    namespace Illuminate\Testing { 
+            /**
+     * 
+     *
+     * @mixin \Illuminate\Http\Response
+     */ 
+        class TestResponse {
+                    /**
+         * 
+         *
+         * @see \JMac\Testing\AdditionalAssertionsServiceProvider::register()
+         * @param array $structure
+         * @static 
+         */ 
+        public static function assertJsonTypedStructure($structure)
+        {
+                        return \Illuminate\Testing\TestResponse::assertJsonTypedStructure($structure);
+        }
+         
+    }
+     
+}
+
 
 namespace  { 
             class App extends \Illuminate\Support\Facades\App {}
