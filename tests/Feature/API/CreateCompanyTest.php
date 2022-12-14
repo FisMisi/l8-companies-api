@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\API\CreateCompany;
 use App\Http\Requests\API\CreateCompanyRequest;
-use App\Models\Company;
 use App\Services\CompanyService;
 use function Pest\Faker\faker;
 use function Pest\Laravel\partialMock;
@@ -41,7 +40,7 @@ test('new company created', function () {
         'latitude' => faker()->latitude,
         'longitude' => faker()->longitude,
         'owner' => faker()->name,
-        'employees' => faker()->numberBetween(5,100),
+        'employees' => faker()->numberBetween(5, 100),
         'activity' => faker()->word,
         'active' => faker()->boolean,
         'email' => faker()->email,
