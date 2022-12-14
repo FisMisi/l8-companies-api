@@ -12,8 +12,9 @@
 */
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use JMac\Testing\Traits\AdditionalAssertions;
 
-uses(Tests\TestCase::class, RefreshDatabase::class)->in('Feature');
+uses(Tests\TestCase::class, RefreshDatabase::class, AdditionalAssertions::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
