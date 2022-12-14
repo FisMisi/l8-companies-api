@@ -25,6 +25,6 @@ class CreateCompany extends Controller
         $input = $request->validated();
         $this->service->createCompany($input);
 
-        return new JsonResponse();
+        return new JsonResponse([],201);
     }
 }

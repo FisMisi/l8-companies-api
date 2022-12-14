@@ -4,6 +4,7 @@ use App\Http\Controllers\API\CreateCompany;
 use App\Http\Requests\API\CreateCompanyRequest;
 use App\Models\Company;
 use App\Services\CompanyService;
+use function Pest\Faker\faker;
 use function Pest\Laravel\partialMock;
 use function Pest\Laravel\postJson;
 
@@ -25,30 +26,27 @@ it('validates with CreateCompanyRequest', function () {
     );
 });
 
-it('should return the new company details', function () {
-    $pwd = 'password';
-    $company = Company::factory()->create(['password' => $pwd]);
+test('new company created', function () {
     $mock = partialMock(CompanyService::class);
-    $mock->shouldReceive('createCompany')
-         ->andReturn($company);
+    $mock->shouldReceive('createCompany');
 
     $response = postJson(route($this->endpoint, [
-        'name' => $company->name,
-        'registration_number' => $company->registration_number,
-        'foundation_date' => $company->foundation_date,
-        'country' => $company->country,
-        'zip_code' => $company->zip_code,
-        'city' => $company->city,
-        'street_address' => $company->street_address,
-        'latitude' => $company->latitude,
-        'longitude' => $company->longitude,
-        'owner' => $company->owner,
-        'employees' => $company->employees,
-        'activity' => $company->activity,
-        'active' => $company->active,
-        'email' => $company->email,
-        'password' => $pwd,
+        'name' => faker()->name(),
+        'registration_number' => faker()->bothify('######-####'),
+        'foundation_date' => faker()->date,
+        'country' => faker()->country,
+        'zip_code' => faker()->postcode,
+        'city' => faker()->city,
+        'street_address' => faker()->address,
+        'latitude' => faker()->latitude,
+        'longitude' => faker()->longitude,
+        'owner' => faker()->name,
+        'employees' => faker()->numberBetween(5,100),
+        'activity' => faker()->word,
+        'active' => faker()->boolean,
+        'email' => faker()->email,
+        'password' => faker()->password,
     ]));
 
-    $response->assertOk();
+    $response->assertCreated();
 });
