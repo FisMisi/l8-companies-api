@@ -67,4 +67,19 @@ class CompanyService
             ->select($cols)
             ->findMany($ids);
     }
+
+    /**
+     * @param Company $company
+     * @param array $input
+     * @return bool
+     * @throws \Throwable
+     */
+    public function updateCompany(Company $company, array $input): bool
+    {
+        if (isset($input['password'])) {
+            $input['password'] = Hash::make($input['password']);
+        }
+
+        return $company->updateOrFail($input);
+    }
 }

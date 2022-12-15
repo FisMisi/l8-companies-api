@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\CreateCompany;
 use App\Http\Controllers\API\GetCompanies;
+use App\Http\Controllers\API\UpdateCompany;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/companies', GetCompanies::class)->name('api.companies');
 Route::post('/companies', CreateCompany::class)->name('api.companies.store');
+Route::patch('/companies/{company}', UpdateCompany::class)->name('api.companies.update');
