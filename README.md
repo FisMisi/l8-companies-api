@@ -79,3 +79,30 @@ curl --request POST \
   --form password=password \
   --form =
 ```
+### Update company
+
+---
+
+`POST /api/companies`
+
+##### Fields
+
+| Field               | Type                 |
+|---------------------|----------------------|
+| name                | string               |
+| registration_number | string               |
+| foundation_date     | date                 |
+| country             | string               |
+| zip_code            | string               |
+| city                | string               |
+| street_address      | string               |
+| latitude            | string               |
+| longitude           | string               |
+| owner               | string               |
+| employees           | integer              |
+| activity            | string               |
+| active              | boolean              |
+| email               | string               |
+| password            | string               |
+
+##### Request
