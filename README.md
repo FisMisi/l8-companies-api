@@ -20,14 +20,82 @@ php artisan import:companies
 
 ---
 
-Retrieve all companies.
+Retrieve companies.
 
 `GET /api/companies`
 
-You can pass company id one or more with query string. 
-E.g.:
-
 `GET /api/companies?companyId[]=1&companyId[]=3`
+
+##### Fields
+
+The input is **optional**
+
+| Field        | Type              | Description |
+|--------------|-------------------|-------------|
+| companyId    | null &#124; array | You can pass company id one or more with query string.|
+
+##### Request
+
+```shell
+curl --request GET \
+  --url 'http://localhost:8088/api/companies?companyId%5B%5D=1&companyId%5B%5D=3' \
+  --header 'Content-Type: application/json'
+```
+
+##### Response
+
+```shell
+< HTTP/1.1 200 OK
+< Host: localhost:8088
+< Date: Thu, 15 Dec 2022 13:02:31 GMT
+< Connection: close
+< X-Powered-By: PHP/8.1.13
+< Cache-Control: no-cache, private
+< Date: Thu, 15 Dec 2022 13:02:31 GMT
+< Content-Type: application/json
+< X-RateLimit-Limit: 60
+< X-RateLimit-Remaining: 59
+< Access-Control-Allow-Origin: *
+
+{
+"data": [
+    {
+        "id": 1,
+        "name": "Mauris PC",
+        "registration_number": "177874-5578",
+        "foundation_date": "1990-05-01",
+        "country": "Belarus",
+        "zip_code": "71137",
+        "city": "Villa Verde",
+        "street_address": "P.O. Box 391, 1457 Sed St.",
+        "latitude": "50.67063",
+        "longitude": "-75.377",
+        "owner": "Travis Elliott",
+        "employees": 11,
+        "activity": "Car",
+        "active": 0,
+        "email": "Donec.sollicitudin@Duisacarcu.com"
+    },
+    {
+        "id": 3,
+        "name": "Egestas Hendrerit Neque LLP",
+        "registration_number": "615308-4733",
+        "foundation_date": "1994-06-10",
+        "country": "Western Sahara",
+        "zip_code": "442580",
+        "city": "Lagundo\/Algund",
+        "street_address": "P.O. Box 857, 1455 Nullam Street",
+        "latitude": "89.75893",
+        "longitude": "-125.99941",
+        "owner": "Todd Douglas",
+        "employees": 230,
+        "activity": "Building Industry",
+        "active": 1,
+        "email": "lacus.Quisque@posuerecubiliaCurae.org"
+    }
+]
+}
+```
 
 ### Create company
 
