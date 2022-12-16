@@ -1,5 +1,8 @@
 # Laravel8-Companies-API
 
+[![Testing](https://github.com/FisMisi/l8-companies-api/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/FisMisi/l8-companies-api/actions/workflows/test.yaml)
+[![Static code analysis](https://github.com/FisMisi/l8-companies-api/actions/workflows/static-code.yml/badge.svg?branch=main)](https://github.com/FisMisi/l8-companies-api/actions/workflows/static-code.yml)
+
 ## INSTALL
 
 #### DATABASE
@@ -12,6 +15,28 @@ php artisan migrate
 
 ```php
 php artisan import:companies
+```
+
+## Queries
+
+Készíts egy olyan lekérdezést amely visszaadja, hogy 2001.01.01 napjától kezdve egészen a mai napig az adott napon mely cégek alakultak meg. (azon a napon ahol nem volt cég alapítás ott null értéket vegyen fel).
+
+`postgresql`
+
+```postgresql
+WITH stats AS (
+	select 
+		date_trunc('day', foundation_date) AS created, 
+		string_agg(name, ', ') AS companies
+	from companies
+	group by date_trunc('day', foundation_date)
+)
+SELECT 
+	TO_CHAR(day::date, 'yyyy.mm.dd') as date, 
+	stats.companies
+FROM generate_series('2001.01.01' , now(), interval  '1 day') AS day
+LEFT JOIN stats ON stats.created = day
+ORDER BY day;
 ```
 
 ## REST API
@@ -230,4 +255,13 @@ curl --request POST \
 < Access-Control-Allow-Origin: *
 
 {}
+```
+
+### TESTS
+
+Automated tests were made by [PEST testing framework](https://pestphp.com/).
+
+
+```php
+php artisan test
 ```
