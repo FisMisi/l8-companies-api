@@ -19,8 +19,6 @@ php artisan import:companies
 
 ## Queries
 
-Készíts egy olyan lekérdezést amely visszaadja, hogy 2001.01.01 napjától kezdve egészen a mai napig az adott napon mely cégek alakultak meg. (azon a napon ahol nem volt cég alapítás ott null értéket vegyen fel).
-
 `postgresql`
 
 ```postgresql
